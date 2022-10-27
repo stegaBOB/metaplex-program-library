@@ -42,6 +42,14 @@ jobs:
       workflow: ${{ steps.filter.outputs.workflow }}
       action: ${{ steps.filter.outputs.action }}
     steps:
+      - run: echo ${{ env.CACHE == true }}
+        shell: bash
+      - run: echo ${{ env.CACHE == 'true' }}
+        shell: bash
+      - run: echo ${{ env.CACHE == false }}
+        shell: bash
+      - run: echo ${{ env.CACHE == 'false' }}
+        shell: bash
       - uses: actions/checkout@v2
       # For pull requests it's not necessary to checkout the code
       - uses: dorny/paths-filter@v2
